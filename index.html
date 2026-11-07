@@ -1,488 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Jagdish Prasad Enterprises - A growing business enterprise based in Saharsa, Bihar.">
-<title>Jagdish Prasad Enterprises | Official Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087c45">
+<meta name="description" content="JP General Store & Digital Center - Jagdish Prasad Enterprises, Amarpur, Saharsa, Bihar.">
+<title>JP General Store | Jagdish Prasad Enterprises</title>
 <style>
-:root{--navy:#102b50;--blue:#1d5fa7;--gold:#e7b44a;--ink:#172334;--muted:#627084;--light:#f3f7fb}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.6}
-a{text-decoration:none;color:inherit}.wrap{width:min(1120px,92%);margin:auto}
-header{background:#fff;position:sticky;top:0;z-index:5;box-shadow:0 2px 14px #102b5012}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy);letter-spacing:.3px}
-.logo{width:46px;height:46px;border-radius:12px;background:var(--navy);color:white;display:grid;place-items:center;font-size:20px}
-.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:2px}
-nav{display:flex;gap:24px;font-size:14px;font-weight:700;color:#34445a}
-nav a:hover{color:var(--blue)}
-.hero{background:linear-gradient(120deg,#0d2544ed,#164f89e8),linear-gradient(45deg,#102b50,#246bb0);color:#fff;padding:92px 0 86px}
-.hero-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:45px;align-items:center}
-.kicker{color:#f5ca6c;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-h1{font-size:clamp(36px,5vw,60px);line-height:1.08;margin:14px 0 18px;max-width:720px}
-.hero p{color:#e2ecf8;font-size:18px;max-width:650px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-block;padding:13px 21px;border-radius:8px;font-weight:800;font-size:14px}
-.primary{background:var(--gold);color:#14263c}.secondary{border:1px solid #ffffff88;color:#fff}
-.hero-card{background:#ffffff12;border:1px solid #ffffff30;border-radius:18px;padding:28px;backdrop-filter:blur(4px)}
-.hero-card strong{display:block;font-size:24px;margin-bottom:8px}.hero-card p{font-size:15px;margin:0}
-section{padding:76px 0}.eyebrow{color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:1.6px;font-size:12px}
-h2{font-size:clamp(28px,3vw,40px);line-height:1.2;color:var(--navy);margin:8px 0 14px}
-.intro{max-width:700px;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.card{border:1px solid #e2e9f1;border-radius:14px;padding:25px;background:#fff;box-shadow:0 8px 25px #102b5008}
-.card .ico{font-size:27px}.card h3{color:var(--navy);margin:12px 0 6px}.card p{color:var(--muted);margin:0;font-size:14px}
-.soft{background:var(--light)}
-.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
-.values{background:#fff;border-radius:16px;padding:26px;border:1px solid #e3eaf2}
-.values div{padding:12px 0;border-bottom:1px solid #edf1f5}.values div:last-child{border:0}
-.people{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}
-.person{padding:24px;border-radius:14px;background:#fff;border:1px solid #e3eaf2}
-.person span{font-size:12px;color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:1px}
-.person h3{margin:7px 0 0;color:var(--navy);font-size:22px}
-.contact{background:var(--navy);color:white}.contact h2{color:white}.contact p{color:#dce7f4}
-.contact-box{margin-top:25px;background:#ffffff12;border:1px solid #ffffff2b;padding:24px;border-radius:14px;max-width:720px}
-footer{background:#091c33;color:#c8d5e4;padding:25px 0;font-size:13px}
-footer .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media(max-width:760px){.nav{height:auto;padding:14px 0;align-items:flex-start;flex-direction:column}nav{gap:14px;flex-wrap:wrap}.hero{padding:65px 0}.hero-grid,.about-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.people{grid-template-columns:1fr}section{padding:56px 0}}
+:root{--g:#087c45;--gd:#075c35;--gold:#ffca28;--ink:#17231b;--muted:#66736b;--bg:#f4f8f5;--line:#dce7df;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Devanagari",Arial,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:11px 15px;background:var(--g);color:#fff;font-weight:700}button:hover{background:var(--gd)}button.secondary{background:#e8f3ec;color:var(--gd)}button.gold{background:var(--gold);color:#26351f}
+header{background:linear-gradient(120deg,var(--gd),var(--g));color:white;position:sticky;top:0;z-index:20;box-shadow:0 3px 15px #0002}
+.head{max-width:1100px;margin:auto;padding:12px 16px;display:flex;align-items:center;gap:12px}.brandmark{width:52px;height:52px;flex:0 0 52px;border-radius:15px;background:#fff;color:var(--g);border:3px solid var(--gold);display:grid;place-items:center;font-size:22px;font-weight:950;letter-spacing:-2px}
+.brand h1{font-size:19px;line-height:1.2;margin:0}.brand p{font-size:11px;margin:3px 0 0;opacity:.9}.nav{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.nav a,.nav button{font-size:12px;padding:8px 10px;border-radius:8px;background:#ffffff18;color:white}.nav a:hover,.nav button:hover{background:#ffffff30}
+main{max-width:1100px;margin:auto;padding:18px 15px}.hero{border-radius:20px;background:linear-gradient(120deg,#075c35ed,#087c45e8),radial-gradient(circle at 90% 10%,#ffca2870,transparent 35%);color:#fff;padding:42px 25px;margin:4px 0 18px;overflow:hidden}
+.hero h2{font-size:clamp(27px,5vw,43px);line-height:1.15;margin:0 0 10px}.hero p{max-width:650px;color:#f0fff4;margin:0 0 18px}.hero .tag{display:inline-block;background:#ffca28;color:#26351f;padding:5px 10px;border-radius:30px;font-size:12px;font-weight:800;margin-bottom:12px}
+.actions{display:flex;gap:9px;flex-wrap:wrap}.section{background:var(--white);border:1px solid var(--line);border-radius:17px;padding:20px;margin:16px 0;box-shadow:0 5px 18px #15351a0a}.section h2{font-size:22px;margin:0 0 5px;color:var(--gd)}.sub{color:var(--muted);font-size:13px;margin:0 0 15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.tile{border:1px solid var(--line);border-radius:13px;padding:15px;background:#fff}.tile .emoji{font-size:27px}.tile h3{font-size:16px;margin:7px 0 3px}.tile p{font-size:12px;color:var(--muted);margin:0}
+.category{display:flex;align-items:center;gap:12px}.category .emoji{font-size:28px}.category h3{margin:0;font-size:15px}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.person{text-align:center;border:1px solid var(--line);border-radius:15px;padding:17px}.avatar{height:92px;width:92px;border-radius:50%;margin:0 auto 10px;border:4px solid var(--gold);background:#e8f3ec;color:var(--g);display:grid;place-items:center;font-size:28px;font-weight:900;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.person h3{margin:3px 0}.person p{margin:0;color:var(--muted);font-size:13px}
+input,textarea,select{width:100%;padding:11px 12px;border:1px solid #cbd8cf;border-radius:9px;margin:5px 0 12px;font:inherit;background:#fff;color:var(--ink)}label{font-size:13px;font-weight:700}.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0 12px}.tabs{display:flex;gap:8px;margin-bottom:13px}.tabs button{flex:1}.tabs .off{background:#e8f3ec;color:var(--gd)}
+.hidden{display:none!important}.notice{padding:11px 13px;border-radius:10px;background:#eaf5ed;margin:10px 0;font-size:14px}.notice.bad{background:#fff0ed;color:#9a2119}.muted{font-size:13px;color:var(--muted)}.pill{display:inline-block;background:#e8f3ec;color:var(--gd);padding:4px 9px;border-radius:30px;font-size:11px;font-weight:800}
+.product{border:1px solid var(--line);border-radius:12px;padding:12px}.product h3{margin:0 0 3px;font-size:15px}.product p{margin:0;color:var(--muted);font-size:12px}.product .price{font-weight:800;color:var(--gd);margin-top:6px}.product img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.right{margin-left:auto}.footer{background:#103e29;color:#eaf5ed;padding:25px 16px;margin-top:25px}.footerin{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}.footer h3{margin:0 0 7px;color:#ffda59}.footer p{margin:4px 0;font-size:13px}.smallprint{font-size:11px;color:#d0e2d6}
+@media(max-width:700px){.head{flex-wrap:wrap}.nav{width:100%;justify-content:flex-start;margin:0}.nav a{font-size:11px}.hero{padding:30px 19px}.section{padding:16px}}
 </style>
 </head>
-  <button id="installApp"
-style="display:none; padding:12px 20px;
-background:#08783e; color:white;
-border:0; border-radius:8px;
-font-size:16px;">
-📲 Install JP Store App
-</button>
-
-<script>
-let deferredPrompt;
-
-const installButton =
-document.getElementById("installApp");
-
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installButton.style.display = "block";
-});
-
-installButton.addEventListener("click", async () => {
-  if (!deferredPrompt) return;
-
-  deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
-
-  deferredPrompt = null;
-  installButton.style.display = "none";
-});
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register(
-      "/service-worker.js"
-    ).catch(console.error);
-  });
-}
-</script>
 <body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#home"><span class="logo">JP</span><span>JAGDISH PRASAD<small>ENTERPRISES</small></span></a>
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#team">Leadership</a><a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+<header><div class="head">
+<div class="brandmark" aria-label="JP Logo">JP</div>
+<div class="brand"><h1>JP GENERAL STORE</h1><p>JAGDISH PRASAD ENTERPRISES • आपका भरोसा, हमारी पहचान</p></div>
+<nav class="nav">
+<a href="#home">Home</a><a href="#about">About</a><a href="#products">Products</a><a href="#services">Services</a><a href="#team">Management</a><a href="#contact">Contact</a>
+<button id="navAccount" type="button">Login / Register</button>
+</nav></div></header>
+
 <main>
+<div id="notice" class="notice hidden" role="status"></div>
 <section class="hero" id="home">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="kicker">Welcome to our enterprise</div>
-      <h1>Building Trust.<br>Growing Business.</h1>
-      <p>Jagdish Prasad Enterprises is a growing business enterprise based in Saharsa, Bihar, focused on dependable service, customer relationships and long-term growth.</p>
-      <div class="actions"><a class="btn primary" href="#services">Explore Services</a><a class="btn secondary" href="#contact">Contact Us</a></div>
-    </div>
-    <div class="hero-card"><strong>Your trusted business partner</strong><p>We believe in honest work, reliable service and building lasting relationships with our customers and business partners.</p></div>
-  </div>
-</section>
-<section id="about">
-  <div class="wrap about-grid">
-    <div><div class="eyebrow">Who we are</div><h2>About Jagdish Prasad Enterprises</h2>
-      <p class="intro">Jagdish Prasad Enterprises aims to build a strong and trusted presence through customer-focused business activities. Based in Village Amarpur, Saharsa, Bihar, we are committed to professionalism, transparency and steady development.</p>
-      <p class="intro">Our goal is to grow responsibly, create useful services and build long-term relationships with customers, suppliers and partners.</p>
-    </div>
-    <div class="values">
-      <div><b>Our Vision</b><br><span class="intro">To become a trusted and respected enterprise.</span></div>
-      <div><b>Our Mission</b><br><span class="intro">To deliver dependable service with integrity.</span></div>
-      <div><b>Our Values</b><br><span class="intro">Trust, quality, transparency and customer satisfaction.</span></div>
-    </div>
-  </div>
-</section>
-<section class="soft" id="services">
-  <div class="wrap">
-    <div class="eyebrow">What we do</div><h2>Our Business Areas</h2>
-    <p class="intro">Our business activities may include the following areas. Contact us for current availability and details.</p>
-    <div class="cards">
-      <artic<style>
-.store-section {
- <img src="logo.png"
-     alt="JP Enterprises Logo"
-     style="width:150px;height:auto;">
-  font-family: Arial, sans-serif;
-}
-        </style>
-<section class="team-section">
-  <h2>Our Management Team</h2>
-  <p>JAGDISH PRASAD ENTERPRISES</p>
-
-  <div class="team-container">
-
-    <div class="team-card">
-      <img src="owner.jpg" alt="Amit Kumar">
-      <h3>Amit Kumar</h3>
-      <p>Owner</p>
-    </div>
-
-    <div class="team-card">
-      <img src="director.jpg" alt="Satish Kumar">
-      <h3>Satish Kumar</h3>
-      <p>Director</p>
-    </div>
-
-  </div>
+<span class="tag">QUALITY PRODUCTS • BEST SERVICE</span>
+<h2>Welcome to JP General Store</h2>
+<p>आपकी रोज़मर्रा की जरूरतों का भरोसेमंद स्थान। किराना सामान, कोल्ड ड्रिंक, स्नैक्स, स्टेशनरी और Digital Center की ऑनलाइन सेवाएं — सब एक ही जगह।</p>
+<div class="actions"><a href="#products"><button class="gold">Our Products</button></a><a href="#services"><button class="secondary">Digital Services</button></a><button id="heroLogin" class="secondary" type="button">Customer Login</button><button id="installBtn" class="gold hidden" type="button">📲 Install App</button></div>
 </section>
 
-<style>
-.team-section {
-  text-align: center;
-  padding: 35px 15px;
-  background: #f2f7f2;
-}
-
-.team-section h2 {
-  color: #14532d;
-}
-
-.team-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 25px;
-}
-
-.team-card {
-  background: white;
-  width: 220px;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px #0002;
-}
-
-.team-card img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #d4af37;
-}
-.store-section h2 { color: #14532d; }
-.store-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(145px,1fr));
-  gap: 15px;
-  max-width: 1000px;
-  margin: 25px auto;
-}
-.store-card {
-  background: white;
-  padding: 20px 10px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px #0001;
-}
-.store-card .emoji { font-size: 42px; }
-.store-card h3 { font-size: 16px; }
-.store-card a {
-  display: inline-block;
-  background: #15803d;
-  color: white;
-  padding: 9px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 13px;
-}
-  
-</style>
-
-<section class="store-section" id="general-store">
-  <h2>🛒 JP GENERAL STORE</h2>
-  <p>आपकी जरूरत का हर सामान एक ही जगह!</p>
-
-  <div class="store-grid">
-
-    <div class="store-card">
-      <div class="emoji">🛍️</div>
-      <h3>किराना सामान</h3>
-      <p>Daily Grocery Items</p>
-      <a href="https://wa.me/919525115946?text=मुझे%20किराना%20सामान%20चाहिए">Order Now</a>
-    </div>
-
-    <div class="store-card">
-      <div class="emoji">🥤</div>
-      <h3>कोल्ड ड्रिंक</h3>
-      <p>Cold Drinks & Beverages</p>
-      <a href="https://wa.me/919525115946?text=मुझे%20कोल्ड%20ड्रिंक%20चाहिए">Order Now</a>
-    </div>
-
-    <div class="store-card">
-      <div class="emoji">🍪</div>
-      <h3>बिस्कुट और नमकीन</h3>
-      <p>Biscuits & Snacks</p>
-      <a href="https://wa.me/919525115946?text=मुझे%20बिस्कुट%20और%20नमकीन%20चाहिए">Order Now</a>
-    </div>
-
-    <div class="store-card">
-      <div class="emoji">🫒</div>
-      <h3>तेल और मसाले</h3>
-      <p>Oil & Spices</p>
-      <a href="https://wa.me/919525115946?text=मुझे%20तेल%20और%20मसाले%20चाहिए">Order Now</a>
-    </div>
-
-    <div class="store-card">
-      <div class="emoji">🌾</div>
-      <h3>चावल और दाल</h3>
-      <p>Rice & Pulses</p>
-      <a href="https://wa.me/919525115946?text=मुझे%20चावल%20और%20दाल%20चाहिए">Order Now</a>
-    </div>
-
-    <div class="store-card">
-      <div class="emoji">🧴</div>
-      <h3>साबुन और शैम्पू</h3>
-      <p>Personal Care</p>
-      <a href="https://wa.me/919525115946?text=मुझे%20साबुन%20और%20शैम्पू%20चाहिए">Order Now</a>
-    </div>
-
-    <div class="store-card">
-      <div class="emoji">📚</div>
-      <h3>स्टेशनरी सामान</h3>
-      <p>Books & Stationery</p>
-      <a href="https://wa.me/919525115946?text=मुझे%20स्टेशनरी%20सामान%20चाहिए">Order Now</a>
-    </div>
-
-    <div class="store-card">
-      <div class="emoji">🔌</div>
-      <h3>इलेक्ट्रॉनिक्स</h3>
-      <p>Electronics Items</p>
-      <a href="https://wa.me/919525115946?text=मुझे%20इलेक्ट्रॉनिक्स%20सामान%20चाहिए">Order Now</a>
-    </div>
-
-  </div>
-
-  <p><strong>JP General Store & Digital Center</strong></p>
-  <p>Village Amarpur, Ward No. 03, Saharsa, Bihar</p>
-  <p>Contact: 9525115946</p>
+<section class="section" id="about">
+<h2>About Us</h2><p class="sub">Jagdish Prasad Enterprises के अंतर्गत JP General Store & Digital Center</p>
+<p>JP General Store में हमारा उद्देश्य ग्राहकों को रोज़मर्रा के उपयोग की गुणवत्तापूर्ण वस्तुएं, उचित सेवा और सुविधाजनक खरीदारी अनुभव देना है। हमारा Digital Center ऑनलाइन फॉर्म और डिजिटल सेवाओं में सहायता के लिए है।</p>
+<div class="grid">
+<div class="tile"><div class="emoji">🤝</div><h3>Trust</h3><p>ग्राहकों के भरोसे और संतुष्टि को प्राथमिकता।</p></div>
+<div class="tile"><div class="emoji">🛒</div><h3>Daily Needs</h3><p>घर और दैनिक उपयोग के जरूरी सामान।</p></div>
+<div class="tile"><div class="emoji">💻</div><h3>Digital Support</h3><p>ऑनलाइन फॉर्म और डिजिटल सेवाओं में सहायता।</p></div>
+</div>
 </section>
-</body>
-</html>le class="card"><div class="ico">🏪</div><h3>General Store</h3><p>Retail and everyday-use products for local customers.</p></article>
-      <article class="card"><div class="ico">💻</div><h3>Digital Center</h3><p>Digital assistance and online service support, subject to applicable authorisations.</p></article>
-      <article class="card"><div class="ico">🤝</div><h3>Business Services</h3><p>Developing business relationships, service opportunities and partnerships.</p></article>
-    </div>
-  </div>
+
+<section class="section" id="products">
+<h2>Our Products</h2><p class="sub">हमारी दुकान की मुख्य कैटेगरी</p>
+<div class="grid">
+<div class="tile category"><span class="emoji">🛍️</span><div><h3>किराना सामान</h3><p>रोज़मर्रा की जरूरतें</p></div></div>
+<div class="tile category"><span class="emoji">🥤</span><div><h3>कोल्ड ड्रिंक</h3><p>ठंडे पेय पदार्थ</p></div></div>
+<div class="tile category"><span class="emoji">🍪</span><div><h3>बिस्कुट और नमकीन</h3><p>स्नैक्स और पैकेट फूड</p></div></div>
+<div class="tile category"><span class="emoji">🫙</span><div><h3>तेल और मसाले</h3><p>खाना बनाने की सामग्री</p></div></div>
+<div class="tile category"><span class="emoji">🍚</span><div><h3>चावल और दाल</h3><p>अनाज और दालें</p></div></div>
+<div class="tile category"><span class="emoji">🧼</span><div><h3>साबुन और शैम्पू</h3><p>पर्सनल केयर</p></div></div>
+<div class="tile category"><span class="emoji">📚</span><div><h3>स्टेशनरी सामान</h3><p>कॉपी, पेन और अन्य सामग्री</p></div></div>
+<div class="tile category"><span class="emoji">🔌</span><div><h3>इलेक्ट्रॉनिक्स</h3><p>दैनिक उपयोग के इलेक्ट्रॉनिक सामान</p></div></div>
+</div>
+<h3 style="margin-top:22px">Available Products</h3><div id="publicProducts" class="grid"><p class="muted">Supabase connect करने पर Admin द्वारा जोड़े गए उत्पाद यहां दिखेंगे।</p></div>
 </section>
-<section id="team">
-  <div class="wrap">
-    <div class="eyebrow">Our leadership</div><h2>Meet the Leadership</h2>
-    <p class="intro">The people guiding the enterprise and its growth.</p>
-    <div class="people">
-      <div class="person"><span>Owner</span><h3>Amit Kumar</h3></div>
-      <div class="person"><span>Director</span><h3>Satish Kumar</h3></div>
-    </div>
-  </div>
-</section><section id="contact" style="padding:40px 20px; text-align:center; background:#f2f5f9;">
-  <h2>Contact Us</h2>
-  <h3>JAGDISH PRASAD ENTERPRISES</h3>
 
-  <p><strong>Owner:</strong> Amit Kumar</p>
-  <p><strong>Director:</strong> Satish Kumar</p>
-
-  <p>
-    <strong>Mobile:</strong>
-    <a href="tel:9525115946">9525115946</a>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <a href="mailto:kumars29122023@gmail.com">
-      kumars29122023@gmail.com
-    </a>
-  </p>
-
-  <p>
-    <strong>Address:</strong><br>
-    Village Amarpur, Ward No. 03,<br>
-    District Saharsa, Bihar
-  </p>
+<section class="section" id="services">
+<h2>Digital Center & Services</h2><p class="sub">JP General Store के साथ डिजिटल सुविधा</p>
+<div class="grid">
+<div class="tile"><div class="emoji">📝</div><h3>Online Forms</h3><p>विभिन्न ऑनलाइन आवेदन फॉर्म भरने में सहायता।</p></div>
+<div class="tile"><div class="emoji">💳</div><h3>Digital Transactions</h3><p>उपलब्ध और अधिकृत सेवाओं के माध्यम से पैसे भेजने/निकालने में सहायता।</p></div>
+<div class="tile"><div class="emoji">🖥️</div><h3>Digital Center</h3><p>ऑनलाइन सेवाओं और डिजिटल कार्यों के लिए सहायता केंद्र।</p></div>
+<div class="tile"><div class="emoji">🏢</div><h3>Enterprise Services</h3><p>स्थानीय ग्राहकों और व्यवसायों के लिए सामान्य सेवा सहायता।</p></div>
+</div>
 </section>
-</body>
-</html>
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="eyebrow" style="color:#f5ca6c">Get in touch</div><h2>Contact Jagdish Prasad Enterprises</h2>
-    <p>We welcome enquiries, customer feedback and business discussions.</p>
-    <div class="contact-box">
-      <b>Business Address</b>
-      <p>Village Amarpur, Ward No. 03,<br>District Saharsa, Bihar, India</p>
-      <p><b>Owner:</b> Amit Kumar<br><b>Director:</b> Satish Kumar</p>
-      <p style="font-size:13px">Phone number and email can be added once confirmed.</p>
-    </div>
-  </div>
+
+<section class="section" id="team">
+<h2>Management</h2><p class="sub">Jagdish Prasad Enterprises</p>
+<div class="people">
+<div class="person"><div class="avatar">AK</div><h3>Amit Kumar</h3><p>Owner</p><p class="muted">फोटो जोड़ने के लिए avatar की जगह owner.jpg इस्तेमाल कर सकते हैं।</p></div>
+<div class="person"><div class="avatar">SK</div><h3>Satish Kumar</h3><p>Director</p><p class="muted">फोटो जोड़ने के लिए avatar की जगह director.jpg इस्तेमाल कर सकते हैं।</p></div>
+</div>
+</section>
+
+<section class="section" id="account">
+<h2>Customer Account & Admin</h2><p class="sub">मोबाइल OTP और Password के साथ सुरक्षित अकाउंट। Admin का लॉगिन अलग अधिकारों के साथ काम करेगा।</p>
+<div id="authBox" class="hidden">
+<div class="tabs"><button id="regTab">Registration</button><button id="loginTab" class="off">Login</button></div>
+<form id="registerForm">
+<h3>नया Customer Registration</h3>
+<label>पूरा नाम</label><input id="regName" required maxlength="80">
+<label>मोबाइल नंबर (जैसे +919876543210)</label><input id="regPhone" required inputmode="tel">
+<label>Password (कम से कम 8 अक्षर)</label><input id="regPassword" type="password" required minlength="8">
+<button type="submit">OTP भेजें</button>
+</form>
+<form id="verifyForm" class="hidden"><h3>OTP Verification</h3><label>SMS OTP</label><input id="otp" required maxlength="6" inputmode="numeric"><button type="submit">Verify OTP</button><button id="resendOtp" class="secondary" type="button">OTP दोबारा भेजें</button></form>
+<form id="loginForm" class="hidden"><h3>Customer / Admin Login</h3><label>मोबाइल नंबर</label><input id="loginPhone" required placeholder="+919876543210"><label>Password</label><input id="loginPassword" type="password" required><button type="submit">Login</button><p><button id="forgotBtn" type="button" class="secondary">Forgot Password (OTP)</button></p></form>
+<form id="resetForm" class="hidden"><h3>Password Reset</h3><label>Registered Mobile</label><input id="resetPhone" required placeholder="+919876543210"><button type="submit">Reset OTP भेजें</button><div id="resetArea" class="hidden"><label>OTP</label><input id="resetOtp" maxlength="6"><label>नया Password</label><input id="newPassword" type="password" minlength="8"><button id="finishReset" type="button">Password बदलें</button></div></form>
+</div>
+<div id="userBox" class="hidden">
+<div class="row"><div><h3 id="welcome">My Account</h3><span id="rolePill" class="pill">Customer</span></div><button id="logoutBtn" class="secondary" type="button">Logout</button></div>
+<div class="formgrid"><div><label>नाम</label><input id="profileName"><label>मोबाइल</label><input id="profilePhone" disabled><button id="saveProfile" type="button">Profile Save</button></div><div><h3>My Orders</h3><div id="myOrders" class="muted">अभी कोई ऑर्डर नहीं।</div></div></div>
+</div>
+<div id="adminBox" class="hidden">
+<h3>Admin Dashboard <span class="pill">ADMIN ONLY</span></h3>
+<h3>Product जोड़ें</h3>
+<form id="productForm" class="formgrid">
+<div><label>Product Name</label><input id="pName" required></div><div><label>Category</label><select id="pCategory"><option>किराना सामान</option><option>कोल्ड ड्रिंक</option><option>बिस्कुट और नमकीन</option><option>तेल और मसाले</option><option>चावल और दाल</option><option>साबुन और शैम्पू</option><option>स्टेशनरी सामान</option><option>इलेक्ट्रॉनिक्स</option></select></div>
+<div><label>Price (₹)</label><input id="pPrice" type="number" min="0" step=".01" required></div><div><label>Stock</label><input id="pStock" type="number" min="0" value="0" required></div><div><label>Image URL (optional)</label><input id="pImage" type="url"></div><div style="align-self:end"><button type="submit">Product Save</button></div>
+</form>
+<h3>Manage Products</h3><div id="adminProducts"></div><h3>All Orders</h3><div id="allOrders"></div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<h2>Contact Us</h2><p class="sub">हमसे संपर्क करें या दुकान पर आएं</p>
+<div class="grid">
+<div class="tile"><div class="emoji">📍</div><h3>Address</h3><p>Village Amarpur, Ward No. 03,<br>District Saharsa, Bihar, India</p></div>
+<div class="tile"><div class="emoji">🏪</div><h3>Business</h3><p>JP General Store & Digital Center<br>Jagdish Prasad Enterprises</p></div>
+<div class="tile"><div class="emoji">👤</div><h3>Management</h3><p>Owner: Amit Kumar<br>Director: Satish Kumar</p></div>
+</div>
+</section>
+
+<section class="section" id="setup">
+<h2>Website / Database Setup</h2><p class="sub">Registration, OTP और Admin Panel चालू करने के लिए Supabase connection जरूरी है।</p>
+<div class="formgrid"><div><label>Supabase Project URL</label><input id="supabaseUrl" placeholder="https://xxxx.supabase.co"></div><div><label>Supabase Publishable / anon Key</label><input id="supabaseKey" placeholder="Publishable key या anon key"></div></div>
+<div class="actions"><button id="connectBtn" type="button">Connect Supabase</button><button id="sqlToggle" class="secondary" type="button">Database SQL देखें</button></div>
+<div id="sqlPanel" class="hidden"><p class="muted">इस SQL को Supabase Dashboard → SQL Editor में एक बार Run करें।</p><textarea id="sqlText" rows="17" readonly></textarea><button id="copySql" type="button">SQL Copy करें</button></div>
+<p class="muted">SMS OTP के लिए Supabase Authentication में Phone Provider और SMS Provider configure करें। वेबसाइट HTTPS पर होनी चाहिए। Frontend में केवल Publishable/anon key रखें; Secret/service_role key कभी नहीं।</p>
 </section>
 </main>
-<footer><div class="wrap foot"><span>© <span id="year">2026</span> Jagdish Prasad Enterprises. All rights reserved.</span><span>Village Amarpur, Saharsa, Bihar</span></div></footer>
+
+<footer class="footer"><div class="footerin">
+<div><h3>JP General Store</h3><p>Jagdish Prasad Enterprises</p><p>आपका भरोसा, हमारी पहचान</p></div>
+<div><h3>Quick Links</h3><p><a href="#products">Our Products</a></p><p><a href="#services">Digital Center</a></p><p><a href="#team">Management</a></p></div>
+<div><h3>Address</h3><p>Village Amarpur, Ward No. 03</p><p>District Saharsa, Bihar, India</p></div>
+<div><h3>App</h3><p>इस वेबसाइट को HTTPS पर खोलकर ब्राउज़र के Install विकल्प से होम स्क्रीन पर जोड़ें।</p><p class="smallprint">Single-file website edition. Full offline PWA के लिए अलग service-worker.js फाइल आवश्यक है।</p></div>
+</div></footer>
+
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+const SQL = `create table if not exists public.profiles(id uuid primary key references auth.users(id) on delete cascade,full_name text not null default '',phone text unique,created_at timestamptz default now());
+create table if not exists public.user_roles(user_id uuid references auth.users(id) on delete cascade,role text not null check(role in ('admin','customer')),created_at timestamptz default now(),primary key(user_id,role));
+create table if not exists public.products(id uuid primary key default gen_random_uuid(),name text not null,category text not null default 'General',price numeric(12,2) not null check(price>=0),stock integer not null default 0 check(stock>=0),image_url text,active boolean not null default true,created_at timestamptz default now());
+create table if not exists public.orders(id uuid primary key default gen_random_uuid(),user_id uuid not null references auth.users(id),customer_name text not null,phone text not null,delivery_address text not null,status text not null default 'pending' check(status in ('pending','confirmed','packed','out_for_delivery','delivered','cancelled')),total numeric(12,2) not null default 0 check(total>=0),created_at timestamptz default now());
+create table if not exists public.order_items(id uuid primary key default gen_random_uuid(),order_id uuid references public.orders(id) on delete cascade,product_id uuid references public.products(id),product_name text not null,quantity integer not null check(quantity>0),unit_price numeric(12,2) not null check(unit_price>=0));
+create or replace function public.jp_new_user() returns trigger language plpgsql security definer set search_path='' as $$ begin
+insert into public.profiles(id,full_name,phone) values(new.id,coalesce(new.raw_user_meta_data->>'full_name',''),new.phone) on conflict(id) do update set phone=excluded.phone;
+insert into public.user_roles(user_id,role) values(new.id,'customer') on conflict do nothing; return new; end; $$;
+drop trigger if exists jp_auth_user_created on auth.users;
+create trigger jp_auth_user_created after insert on auth.users for each row execute procedure public.jp_new_user();
+create or replace function public.jp_is_admin() returns boolean language sql stable security definer set search_path='' as $$ select exists(select 1 from public.user_roles where user_id=(select auth.uid()) and role='admin'); $$;
+alter table public.profiles enable row level security; alter table public.user_roles enable row level security; alter table public.products enable row level security; alter table public.orders enable row level security; alter table public.order_items enable row level security;
+grant select,update on public.profiles to authenticated; grant select on public.user_roles to authenticated; grant select on public.products to anon,authenticated; grant insert,update,delete on public.products to authenticated; grant select,insert on public.orders to authenticated; grant update on public.orders to authenticated; grant select,insert on public.order_items to authenticated;
+create policy "jp_profile_read" on public.profiles for select to authenticated using(id=(select auth.uid()) or (select public.jp_is_admin()));
+create policy "jp_profile_update" on public.profiles for update to authenticated using(id=(select auth.uid())) with check(id=(select auth.uid()));
+create policy "jp_roles_read" on public.user_roles for select to authenticated using(user_id=(select auth.uid()) or (select public.jp_is_admin()));
+create policy "jp_products_read" on public.products for select to anon,authenticated using(active=true or (select public.jp_is_admin()));
+create policy "jp_products_insert" on public.products for insert to authenticated with check((select public.jp_is_admin()));
+create policy "jp_products_update" on public.products for update to authenticated using((select public.jp_is_admin())) with check((select public.jp_is_admin()));
+create policy "jp_products_delete" on public.products for delete to authenticated using((select public.jp_is_admin()));
+create policy "jp_orders_read" on public.orders for select to authenticated using(user_id=(select auth.uid()) or (select public.jp_is_admin()));
+create policy "jp_orders_insert" on public.orders for insert to authenticated with check(user_id=(select auth.uid()));
+create policy "jp_orders_update" on public.orders for update to authenticated using((select public.jp_is_admin())) with check((select public.jp_is_admin()));
+create policy "jp_items_read" on public.order_items for select to authenticated using((select public.jp_is_admin()) or exists(select 1 from public.orders o where o.id=order_id and o.user_id=(select auth.uid())));
+create policy "jp_items_insert" on public.order_items for insert to authenticated with check(exists(select 1 from public.orders o where o.id=order_id and o.user_id=(select auth.uid())));
+-- Owner account register + OTP verify karne ke baad is query mein apna verified phone number daal kar admin role dein:
+-- insert into public.user_roles(user_id,role) select id,'admin' from auth.users where phone='+91XXXXXXXXXX' on conflict do nothing;`;
+$("sqlText").value=SQL;
+let db=null,pendingPhone="";
+const $=id=>document.getElementById(id);
+function note(t,bad=false){$("notice").textContent=t;$("notice").classList.remove("hidden");$("notice").classList.toggle("bad",bad)}
+function phone(v){let x=v.trim().replace(/[^\d+]/g,"");if(/^\d{10}$/.test(x))x="+91"+x;if(/^91\d{10}$/.test(x))x="+"+x;if(!/^\+[1-9]\d{7,14}$/.test(x))throw Error("मोबाइल नंबर country code सहित डालें, जैसे +919876543210");return x}
+function showForm(id){["registerForm","verifyForm","loginForm","resetForm"].forEach(x=>$(x).classList.add("hidden"));$(id).classList.remove("hidden")}
+function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("navAccount").onclick=$("heroLogin").onclick=()=>{$("account").scrollIntoView({behavior:"smooth"});$("authBox").classList.remove("hidden")};
+$("regTab").onclick=()=>showForm("registerForm");$("loginTab").onclick=()=>showForm("loginForm");
+$("forgotBtn").onclick=()=>showForm("resetForm");
+$("sqlToggle").onclick=()=>$("sqlPanel").classList.toggle("hidden");
+$("copySql").onclick=async()=>{await navigator.clipboard.writeText(SQL);note("Database SQL कॉपी हो गया।")};
+$("connectBtn").onclick=()=>{try{const u=$("supabaseUrl").value.trim(),k=$("supabaseKey").value.trim();if(!u.startsWith("https://")||!k)throw Error("सही Supabase URL और Publishable/anon Key डालें।");localStorage.setItem("jp_url",u);localStorage.setItem("jp_key",k);db=createClient(u,k);$("authBox").classList.remove("hidden");note("Supabase connected. Registration/Login उपलब्ध है।");refresh().catch(e=>note(e.message,true));}catch(e){note(e.message,true)}};
+if(localStorage.getItem("jp_url"))$("supabaseUrl").value=localStorage.getItem("jp_url");
+if(localStorage.getItem("jp_key"))$("supabaseKey").value=localStorage.getItem("jp_key");
+if(localStorage.getItem("jp_url")&&localStorage.getItem("jp_key")){$("connectBtn").click()}
+$("registerForm").onsubmit=async e=>{e.preventDefault();try{pendingPhone=phone($("regPhone").value);const {error}=await db.auth.signUp({phone:pendingPhone,password:$("regPassword").value,options:{data:{full_name:$("regName").value.trim()}}});if(error)throw error;showForm("verifyForm");note("SMS OTP भेजा गया है।");}catch(x){note(x.message,true)}};
+$("verifyForm").onsubmit=async e=>{e.preventDefault();try{const {error}=await db.auth.verifyOtp({phone:pendingPhone,token:$("otp").value.trim(),type:"sms"});if(error)throw error;note("OTP सत्यापित। Registration पूरा हुआ।");await refresh()}catch(x){note(x.message,true)}};
+$("resendOtp").onclick=async()=>{try{const {error}=await db.auth.resend({type:"sms",phone:pendingPhone});if(error)throw error;note("OTP दोबारा भेजने का अनुरोध किया गया।")}catch(x){note(x.message,true)}};
+$("loginForm").onsubmit=async e=>{e.preventDefault();try{const {error}=await db.auth.signInWithPassword({phone:phone($("loginPhone").value),password:$("loginPassword").value});if(error)throw error;await refresh();note("Login सफल।")}catch(x){note(x.message,true)}};
+$("resetForm").onsubmit=async e=>{e.preventDefault();try{pendingPhone=phone($("resetPhone").value);const {error}=await db.auth.signInWithOtp({phone:pendingPhone,options:{shouldCreateUser:false}});if(error)throw error;$("resetArea").classList.remove("hidden");note("यदि नंबर registered है, तो OTP भेजा जाएगा।")}catch(x){note(x.message,true)}};
+$("finishReset").onclick=async()=>{try{const {error:v}=await db.auth.verifyOtp({phone:pendingPhone,token:$("resetOtp").value.trim(),type:"sms"});if(v)throw v;const {error}=await db.auth.updateUser({password:$("newPassword").value});if(error)throw error;await db.auth.signOut();showForm("loginForm");note("Password बदल गया।")}catch(x){note(x.message,true)}};
+$("logoutBtn").onclick=async()=>{await db.auth.signOut();await refresh();note("Logout हो गया।")};
+$("saveProfile").onclick=async()=>{try{const {data:{user}}=await db.auth.getUser();const {error}=await db.from("profiles").update({full_name:$("profileName").value.trim()}).eq("id",user.id);if(error)throw error;note("Profile save हो गया।")}catch(x){note(x.message,true)}};
+async function loadProducts(admin){const {data,error}=await db.from("products").select("*").order("created_at",{ascending:false});if(error)throw error;const shown=data.filter(x=>x.active||admin);$("publicProducts").innerHTML=shown.length?shown.map(p=>`<div class="product">${p.image_url?`<img src="${safe(p.image_url)}" alt="">`:""}<h3>${safe(p.name)}</h3><p>${safe(p.category)} • Stock ${p.stock}</p><div class="price">₹${Number(p.price).toFixed(2)}</div>${p.active?"":"<span class='pill'>Hidden</span>"}</div>`).join(""):"अभी products उपलब्ध नहीं हैं।";if(admin){$("adminProducts").innerHTML=data.map(p=>`<div class="product"><h3>${safe(p.name)}</h3><p>₹${Number(p.price).toFixed(2)} • ${p.active?"Visible":"Hidden"}</p><button class="secondary" data-id="${p.id}" data-active="${p.active}">${p.active?"Hide":"Show"}</button></div>`).join("")||"No products";$("adminProducts").querySelectorAll("[data-id]").forEach(b=>b.onclick=async()=>{const {error}=await db.from("products").update({active:b.dataset.active!=="true"}).eq("id",b.dataset.id);if(error)note(error.message,true);else{note("Product status बदला गया।");await loadProducts(true)}})}}
+async function loadOrders(userId,admin){let q=db.from("orders").select("*").order("created_at",{ascending:false});if(!admin)q=q.eq("user_id",userId);const {data,error}=await q;if(error)throw error;const target=admin?"allOrders":"myOrders";$(target).innerHTML=data.length?data.map(o=>`<div class="product"><h3>Order ${o.id.slice(0,8)} • ₹${Number(o.total).toFixed(2)}</h3><p>${safe(o.status)} • ${new Date(o.created_at).toLocaleString("en-IN")}</p>${admin?`<select data-order="${o.id}">${["pending","confirmed","packed","out_for_delivery","delivered","cancelled"].map(s=>`<option ${s===o.status?"selected":""}>${s}</option>`).join("")}</select>`:""}</div>`).join(""):"अभी कोई Order नहीं।";if(admin)$(target).querySelectorAll("[data-order]").forEach(s=>s.onchange=async()=>{const {error}=await db.from("orders").update({status:s.value}).eq("id",s.dataset.order);if(error)note(error.message,true);else note("Order status update हुआ।")})}
+$("productForm").onsubmit=async e=>{e.preventDefault();try{const {error}=await db.from("products").insert({name:$("pName").value.trim(),category:$("pCategory").value,price:Number($("pPrice").value),stock:Number($("pStock").value),image_url:$("pImage").value.trim()||null});if(error)throw error;e.target.reset();note("Product जोड़ दिया गया।");await loadProducts(true)}catch(x){note(x.message,true)}};
+async function refresh(){if(!db)return;const {data:{session}}=await db.auth.getSession();const logged=!!session;$("authBox").classList.toggle("hidden",logged);$("userBox").classList.toggle("hidden",!logged);$("adminBox").classList.add("hidden");if(!logged)return;const user=session.user;const {data:p,error:pe}=await db.from("profiles").select("full_name,phone").eq("id",user.id).single();if(pe)throw pe;$("welcome").textContent="नमस्ते, "+(p.full_name||"Customer");$("profileName").value=p.full_name||"";$("profilePhone").value=p.phone||user.phone||"";const {data:r,error:re}=await db.from("user_roles").select("role").eq("user_id",user.id);if(re)throw re;const admin=r.some(x=>x.role==="admin");$("rolePill").textContent=admin?"Admin":"Customer";$("adminBox").classList.toggle("hidden",!admin);await loadProducts(admin);await loadOrders(user.id,admin)}
+if(db)db.auth.onAuthStateChange(()=>setTimeout(()=>refresh().catch(e=>note(e.message,true)),0));
+let installEvent=null;
+const manifest={name:"JP General Store",short_name:"JP Store",start_url:location.href,display:"standalone",background_color:"#f4f8f5",theme_color:"#087c45",icons:[]};
+const manifestBlob=new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"});
+const manifestUrl=URL.createObjectURL(manifestBlob);const manifestLink=document.createElement("link");manifestLink.rel="manifest";manifestLink.href=manifestUrl;document.head.appendChild(manifestLink);
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installEvent=e;$("installBtn").classList.remove("hidden")});
+$("installBtn").onclick=async()=>{if(!installEvent)return;installEvent.prompt();await installEvent.userChoice;installEvent=null;$("installBtn").classList.add("hidden")};
+</script>
 </body>
 </html>
-<header class="main-header">
-  <img src="logo.png" alt="JP Enterprises Logo" class="main-logo">
-<section class="products" id="products">
-  <h2>OUR PRODUCTS</h2>
-  <p>Quality Products at Best Prices</p>
-
-  <div class="product-container">
-
-    <div class="product-card">
-      <img src="grocery.jpg" alt="Grocery">
-      <h3>Grocery Items</h3>
-      <p>किराना सामान</p>
-    </div>
-
-    <div class="product-card">
-      <img src="cold-drinks.jpg" alt="Cold Drinks">
-      <h3>Cold Drinks</h3>
-      <p>कोल्ड ड्रिंक</p>
-    </div>
-
-    <div class="product-card">
-      <img src="biscuits.jpg" alt="Biscuits">
-      <h3>Biscuits & Snacks</h3>
-      <p>बिस्कुट और नमकीन</p>
-    </div>
-
-    <div class="product-card">
-      <img src="oil.jpg" alt="Oil and Spices">
-      <h3>Oil & Spices</h3>
-      <p>तेल और मसाले</p>
-    </div>
-
-    <div class="product-card">
-      <img src="rice.jpg" alt="Rice and Pulses">
-      <h3>Rice & Pulses</h3>
-      <p>चावल और दाल</p>
-    </div>
-
-    <div class="product-card">
-      <img src="stationery.jpg" alt="Stationery">
-      <h3>Stationery</h3>
-      <p>स्टेशनरी सामान</p>
-    </div>
-
-  </div>
-</section>
-
-<style>
-.products {
-  text-align: center;
-  padding: 40px 15px;
-  background: #f5f5f5;
-}
-
-.products h2 {
-  color: #176b35;
-  font-size: 30px;
-}
-
-.product-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  max-width: 1000px;
-  margin: 25px auto;
-}
-
-.product-card {
-  background: white;
-  padding: 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px #ccc;
-}
-
-.product-card img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.product-card h3 {
-  color: #176b35;
-}
-
-@media(min-width:700px) {
-  .product-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-</style>
-  <h1>JAGDISH PRASAD ENTERPRISES</h1>
-  <p>JP General Store & Digital Center</p>
-</header>
-
-<style>
-.main-header {
-  background: #064e24;
-  color:red;
-  text-align: center;
-  padding: 20px 10px;
-}
-
-.main-logo {
-  width: 160px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
-}
-
-.main-header h1 {
-  font-size: 23px;
-  margin: 8px 0;
-}
-
-.main-header p {
-  margin: 5px;
-  color: #ffd700;
-}
-
-
-.team-card h3 {
-  color: #14532d;
-}
-
-.team-card p {
-  color: #777;
-  font-weight: bold;
-}
-</style>
-</body>
-</html>
-<link rel="manifest" href="/manifest.json">
-
-<meta name="theme-color" content="#08783e">
-
-<link rel="apple-touch-icon"
-      href="/icons/icon-192.png">
-
-<meta name="mobile-web-app-capable"
-      content="yes">
-
-<meta name="apple-mobile-web-app-title"
-      content="JP Store">
