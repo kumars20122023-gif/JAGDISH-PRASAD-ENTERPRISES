@@ -47,6 +47,44 @@ footer .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media(max-width:760px){.nav{height:auto;padding:14px 0;align-items:flex-start;flex-direction:column}nav{gap:14px;flex-wrap:wrap}.hero{padding:65px 0}.hero-grid,.about-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.people{grid-template-columns:1fr}section{padding:56px 0}}
 </style>
 </head>
+  <button id="installApp"
+style="display:none; padding:12px 20px;
+background:#08783e; color:white;
+border:0; border-radius:8px;
+font-size:16px;">
+📲 Install JP Store App
+</button>
+
+<script>
+let deferredPrompt;
+
+const installButton =
+document.getElementById("installApp");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installButton.style.display = "block";
+});
+
+installButton.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+
+  deferredPrompt = null;
+  installButton.style.display = "none";
+});
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(
+      "/service-worker.js"
+    ).catch(console.error);
+  });
+}
+</script>
 <body>
 <header>
   <div class="wrap nav">
@@ -436,3 +474,15 @@ footer .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </style>
 </body>
 </html>
+<link rel="manifest" href="/manifest.json">
+
+<meta name="theme-color" content="#08783e">
+
+<link rel="apple-touch-icon"
+      href="/icons/icon-192.png">
+
+<meta name="mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-title"
+      content="JP Store">
