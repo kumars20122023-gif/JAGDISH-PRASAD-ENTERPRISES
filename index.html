@@ -85,6 +85,69 @@ input,textarea,select{width:100%;padding:11px 12px;border:1px solid #cbd8cf;bord
 <div class="person"><div class="avatar">AK</div><h3>Amit Kumar</h3><p>Owner</p><p class="muted">फोटो जोड़ने के लिए avatar की जगह owner.jpg इस्तेमाल कर सकते हैं।</p></div>
 <div class="person"><div class="avatar">SK</div><h3>Satish Kumar</h3><p>Director</p><p class="muted">फोटो जोड़ने के लिए avatar की जगह director.jpg इस्तेमाल कर सकते हैं।</p></div>
 </div>
+  <section class="photo-section">
+  <h2>Our Gallery</h2>
+  <p>JP General Store & Digital Center</p>
+
+  <div class="photo-grid">
+
+    <div class="photo-card">
+      <img src="owner.jpg" alt="Owner">
+      <h3>Owner</h3>
+      <p>Amit Kumar</p>
+    </div>
+
+    <div class="photo-card">
+      <img src="director.jpg" alt="Director">
+      <h3>Director</h3>
+      <p>Satish Kumar</p>
+    </div>
+
+    <div class="photo-card">
+      <img src="shop.jpg" alt="Shop">
+      <h3>Our Store</h3>
+    </div>
+
+    <div class="photo-card">
+      <img src="products.jpg" alt="Products">
+      <h3>Our Products</h3>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.photo-section {
+  text-align:center;
+  padding:30px 15px;
+  background:#f4f7fb;
+}
+.photo-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  max-width:900px;
+  margin:auto;
+}
+.photo-card {
+  background:white;
+  padding:12px;
+  border-radius:12px;
+  box-shadow:0 2px 8px #ccc;
+}
+.photo-card img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+}
+.photo-card h3 {
+  color:#153b70;
+}
+@media(max-width:500px) {
+  .photo-grid {grid-template-columns:1fr;}
+}
+</style>
 </section>
 
 <section class="section" id="account">
