@@ -272,3 +272,280 @@ $("installBtn").onclick=async()=>{if(!installEvent)return;installEvent.prompt();
 </script>
 </body>
 </html>
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123b2b">
+<title>JP General Store | Billing System</title>
+<style>
+:root{--green:#123b2b;--green2:#1e6848;--bg:#f3f6f4;--line:#dbe4de;--muted:#65736b;--white:#fff;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:var(--bg);color:#17231c}
+header{background:var(--green);color:white;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header h1{font-size:20px;margin:0}header p{margin:4px 0 0;font-size:12px;opacity:.85}
+.wrap{max-width:1150px;margin:auto;padding:16px}
+.status{font-size:12px;padding:7px 10px;border-radius:20px;background:#ffffff20}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+button,.btn{border:0;border-radius:9px;padding:10px 13px;background:var(--green2);color:white;font-weight:700;cursor:pointer}
+button.secondary{background:#e6eee9;color:var(--green)}button.danger{background:#fff0ef;color:var(--red)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.tab{background:#e6eee9;color:var(--green)}.tab.active{background:var(--green);color:#fff}
+.card{background:white;border:1px solid var(--line);border-radius:13px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px #173b2b08}
+h2{font-size:18px;margin:0 0 13px}h3{font-size:15px;margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:5px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #cbd8cf;border-radius:8px;background:white;font-size:14px;color:#17231c}
+input:focus,select:focus{outline:2px solid #a7d4b9;border-color:var(--green2)}
+.field{min-width:0}.row{display:flex;gap:9px;align-items:end;flex-wrap:wrap}.row>*{flex:1}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:left}th{background:#eef4f0;color:#234b35}
+td input{min-width:65px;padding:7px}.right{text-align:right}.muted{color:var(--muted);font-size:12px}.total{font-size:20px;font-weight:800;color:var(--green)}
+.kpi{font-size:22px;font-weight:800;color:var(--green)}.kpi-label{font-size:12px;color:var(--muted)}
+.hidden{display:none!important}.notice{padding:10px;border-radius:8px;background:#fff8df;color:#745b10;font-size:13px;line-height:1.5}
+.good{background:#e8f5ec;color:#195b32}.bad{background:#fff0ef;color:#92251e}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.bill-head{text-align:center;border-bottom:2px solid #123b2b;padding-bottom:10px;margin-bottom:12px}
+.bill-head h2{font-size:22px;color:#123b2b;margin:0}.bill-head p{margin:4px 0;font-size:12px}
+#billPreview{max-width:760px;margin:auto;background:white;padding:22px;border:1px solid var(--line)}
+.small{font-size:11px}.pill{display:inline-block;padding:4px 8px;border-radius:20px;background:#eef4f0;font-size:11px}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:650px){.grid,.grid3{grid-template-columns:1fr}.wrap{padding:10px}header{padding:14px}.card{padding:12px}table{font-size:12px}.hide-mobile{display:none}}
+@media print{
+ body{background:white}.no-print,header,nav,.wrap>.card:not(#previewCard),footer{display:none!important}
+ #previewCard{display:block!important;border:0;padding:0;margin:0;box-shadow:none}
+ #billPreview{border:0;padding:0;max-width:none}
+ @page{size:A4;margin:12mm}
+}
+</style>
+</head>
+<body>
+<header>
+ <div><h1>JP GENERAL STORE & DIGITAL CENTER</h1><p>Owner: Amit Kumar | Mobile: 8797862789 | Amarpur, Saharsa, Bihar</p></div>
+ <div class="status" id="syncStatus">● Offline / Local mode</div>
+</header>
+<div class="wrap">
+ <div class="notice no-print" id="setupNotice">
+  <b>पहली बार सेटअप:</b> दोनों डिवाइस में डेटा साझा करने के लिए Firebase प्रोजेक्ट बनाकर नीचे Configuration भरें और एक ही अधिकृत ईमेल/पासवर्ड से लॉगिन करें। अभी Local mode में डेटा केवल इसी ब्राउज़र में रहेगा।
+ </div>
+ <nav class="no-print">
+  <button class="tab active" data-tab="billing">नया बिल</button>
+  <button class="tab" data-tab="products">सामान / स्टॉक</button>
+  <button class="tab" data-tab="reports">बिक्री रिपोर्ट</button>
+  <button class="tab" data-tab="history">पुराने बिल</button>
+  <button class="tab" data-tab="settings">सेटिंग / Sync</button>
+ </nav>
+
+ <section id="billing" class="panel">
+  <div class="card no-print">
+   <h2>नया बिल बनाएं</h2>
+   <div class="grid">
+    <div class="field"><label>बिल का प्रकार</label><select id="billType"><option value="Cash Memo">Cash Memo</option><option value="GST Invoice">GST Invoice</option></select></div>
+    <div class="field"><label>बिल नंबर</label><input id="billNo" readonly></div>
+    <div class="field"><label>तारीख</label><input id="billDate" type="date"></div>
+    <div class="field"><label>ग्राहक का नाम</label><input id="customer" placeholder="ग्राहक का नाम"></div>
+    <div class="field"><label>मोबाइल नंबर</label><input id="customerMobile" inputmode="numeric" placeholder="मोबाइल नंबर"></div>
+    <div class="field"><label>भुगतान का तरीका</label><select id="payment"><option>Cash</option><option>UPI</option><option>Card</option><option>Bank Transfer</option><option>Credit / उधार</option></select></div>
+   </div>
+   <h3 style="margin-top:18px">सामान जोड़ें</h3>
+   <div class="row">
+    <div class="field" style="flex:2"><label>सामान चुनें / नाम लिखें</label><input id="itemName" list="productOptions" placeholder="जैसे चावल, तेल, साबुन"><datalist id="productOptions"></datalist></div>
+    <div class="field"><label>मात्रा</label><input id="itemQty" type="number" min="0.01" step="0.01" value="1"></div>
+    <div class="field"><label>रेट (₹)</label><input id="itemRate" type="number" min="0" step="0.01" placeholder="0"></div>
+    <div class="field"><label>GST %</label><input id="itemGst" type="number" min="0" max="100" step="0.01" value="0"></div>
+    <button type="button" id="addItem">+ जोड़ें</button>
+   </div>
+   <div style="overflow-x:auto;margin-top:14px">
+    <table><thead><tr><th>#</th><th>सामान</th><th>Qty</th><th>Rate</th><th>GST%</th><th>Amount</th><th></th></tr></thead><tbody id="cartRows"></tbody></table>
+   </div>
+   <div class="grid" style="margin-top:14px">
+    <div class="field"><label>Discount (₹)</label><input id="discount" type="number" min="0" value="0"></div>
+    <div class="field"><label>GST गणना</label><select id="gstMode"><option value="exclusive">रेट में GST शामिल नहीं (Exclusive)</option><option value="inclusive">रेट में GST शामिल है (Inclusive)</option></select></div>
+   </div>
+   <div class="row" style="justify-content:space-between;margin-top:15px">
+    <div><div class="muted">कुल राशि</div><div class="total" id="grandTotal">₹0.00</div><div class="muted" id="taxSummary">GST: ₹0.00</div></div>
+    <div class="actions"><button type="button" class="secondary" id="clearCart">खाली करें</button><button type="button" id="saveBill">बिल सेव करें</button></div>
+   </div>
+  </div>
+  <div class="card hidden" id="previewCard">
+   <div class="no-print row" style="justify-content:space-between"><h2>बिल Preview</h2><div class="actions"><button id="printBill">Print / Save PDF</button><button class="secondary" id="newBill">नया बिल</button></div></div>
+   <div id="billPreview"></div>
+  </div>
+ </section>
+
+ <section id="products" class="panel hidden">
+  <div class="card no-print">
+   <h2>सामान / स्टॉक जोड़ें</h2>
+   <div class="grid">
+    <div><label>सामान का नाम</label><input id="pName" placeholder="उदाहरण: चावल"></div>
+    <div><label>रेट (₹)</label><input id="pRate" type="number" min="0" step="0.01"></div>
+    <div><label>GST %</label><input id="pGst" type="number" min="0" max="100" step="0.01" value="0"></div>
+    <div><label>शुरुआती स्टॉक (वैकल्पिक)</label><input id="pStock" type="number" min="0" step="0.01" value="0"></div>
+   </div>
+   <div class="actions"><button id="saveProduct">सामान सेव करें</button></div>
+  </div>
+  <div class="card"><h2>आपके सामान</h2><div style="overflow-x:auto"><table><thead><tr><th>नाम</th><th>रेट</th><th>GST%</th><th>स्टॉक</th><th class="no-print">Action</th></tr></thead><tbody id="productRows"></tbody></table></div></div>
+ </section>
+
+ <section id="reports" class="panel hidden">
+  <div class="grid3">
+   <div class="card"><div class="kpi-label">आज की बिक्री</div><div class="kpi" id="todaySales">₹0.00</div></div>
+   <div class="card"><div class="kpi-label">आज के बिल</div><div class="kpi" id="todayCount">0</div></div>
+   <div class="card"><div class="kpi-label">कुल सेव बिल</div><div class="kpi" id="allCount">0</div></div>
+  </div>
+  <div class="card"><h2>रिपोर्ट</h2><div class="muted">यह कुल बिक्री (revenue) है, शुद्ध लाभ नहीं। लाभ निकालने के लिए खरीद लागत भी दर्ज करनी होगी।</div><div class="actions"><button id="exportCsv">बिल CSV डाउनलोड करें</button></div></div>
+ </section>
+
+ <section id="history" class="panel hidden">
+  <div class="card"><h2>पुराने बिल</h2><div style="overflow-x:auto"><table><thead><tr><th>तारीख</th><th>बिल नंबर</th><th>ग्राहक</th><th>प्रकार</th><th>कुल</th><th>देखें</th></tr></thead><tbody id="historyRows"></tbody></table></div></div>
+ </section>
+
+ <section id="settings" class="panel hidden">
+  <div class="card">
+   <h2>Online Database Sync सेटअप</h2>
+   <p class="muted">नीचे Firebase Web App config पेस्ट करें। यह config Firebase Console → Project settings → Your apps → Web app से मिलता है।</p>
+   <label>Firebase Config (JSON)</label><textarea id="firebaseConfig" rows="7" placeholder='{"apiKey":"...","authDomain":"...","projectId":"...","appId":"..."}'></textarea>
+   <div class="grid" style="margin-top:10px">
+    <div><label>अधिकृत ईमेल</label><input id="loginEmail" type="email" placeholder="आपका Firebase user email"></div>
+    <div><label>पासवर्ड</label><input id="loginPassword" type="password" placeholder="Firebase user password"></div>
+   </div>
+   <div class="actions"><button id="connectFirebase">Connect & Sync</button><button class="secondary" id="disconnectFirebase">Disconnect</button></div>
+   <p class="muted" id="firebaseMessage">Firebase सेटअप होने तक यह ब्राउज़र Local mode में काम करता है।</p>
+  </div>
+  <div class="card">
+   <h3>Firebase सुरक्षा नियम</h3>
+   <p class="muted">Firebase Console → Firestore Database → Rules में नीचे दिए गए नियम प्रकाशित करें। ऐप में सार्वजनिक Signup नहीं है; Firebase Authentication में उपयोगकर्ता को स्वयं Console से बनाएं।</p>
+   <pre style="white-space:pre-wrap;background:#f3f6f4;padding:12px;border-radius:8px;font-size:12px">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /shops/jp-general-store/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}</pre>
+   <div class="notice">यह नियम authenticated users को इस दुकान के डेटा तक access देता है। Firebase Authentication में केवल अपने भरोसेमंद उपयोगकर्ता बनाएं। अपना पासवर्ड किसी के साथ साझा न करें।</div>
+  </div>
+  <div class="card">
+   <h3>महत्वपूर्ण जानकारी</h3>
+   <p class="muted">Local mode में डेटा उसी डिवाइस/ब्राउज़र में सेव रहता है। दोनों डिवाइस पर एक जैसा डेटा देखने के लिए Firebase config और एक ही Firebase login से सफलतापूर्वक Connect करना जरूरी है। GST Invoice जारी करने से पहले अपना GSTIN, सही HSN/SAC और लागू GST दरें जोड़ें/जांचें। यह ऐप GST compliance की कानूनी पुष्टि नहीं करता।</p>
+  </div>
+ </section>
+</div>
+<footer>JP General Store & Digital Center | Billing System</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot, runTransaction, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const $=id=>document.getElementById(id);
+const money=n=>"₹"+Number(n||0).toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2});
+const today=()=>new Date().toISOString().slice(0,10);
+let products=JSON.parse(localStorage.getItem("jp_products")||"[]");
+let bills=JSON.parse(localStorage.getItem("jp_bills")||"[]");
+let cart=[], db=null, auth=null, app=null, unsubs=[], online=false, currentPreview=null;
+function persistLocal(){localStorage.setItem("jp_products",JSON.stringify(products));localStorage.setItem("jp_bills",JSON.stringify(bills));}
+function setStatus(msg,good=false){$("syncStatus").textContent=msg;$("syncStatus").style.background=good?"#d9f5e3":"#ffffff20";$("syncStatus").style.color=good?"#14532d":"white";}
+function nextBillNo(){let prefix=$("billType").value==="GST Invoice"?"GST":"CASH";let seq=bills.length+1;return prefix+"-"+String(seq).padStart(5,"0");}
+function refreshBillNo(){$("billNo").value=nextBillNo();}
+function renderProducts(){
+ $("productRows").innerHTML=products.map((p,i)=><tr><td>${esc(p.name)}</td><td>${money(p.rate)}</td><td>${p.gst||0}%</td><td>${p.stock??"—"}</td><td class="no-print"><button class="danger" data-del-product="${i}">हटाएं</button></td></tr>).join("")||'<tr><td colspan="5" class="muted">अभी कोई सामान नहीं जोड़ा गया।</td></tr>';
+ $("productOptions").innerHTML=products.map(p=><option value="${esc(p.name)}"></option>).join("");
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function renderCart(){
+ $("cartRows").innerHTML=cart.map((x,i)=><tr><td>${i+1}</td><td>${esc(x.name)}</td><td>${x.qty}</td><td>${money(x.rate)}</td><td>${x.gst}%</td><td>${money(x.amount)}</td><td><button class="danger" data-del-cart="${i}">×</button></td></tr>).join("")||'<tr><td colspan="7" class="muted">कोई सामान नहीं जोड़ा गया।</td></tr>';
+ const subtotal=cart.reduce((s,x)=>s+x.base,0), tax=cart.reduce((s,x)=>s+x.tax,0), discount=Math.max(0,Number($("discount").value||0));
+ const total=Math.max(0,subtotal+tax-discount);
+ $("grandTotal").textContent=money(total);$("taxSummary").textContent="GST: "+money(tax)+" | Subtotal: "+money(subtotal);
+}
+function addItem(){
+ const name=$("itemName").value.trim(),qty=Number($("itemQty").value),rate=Number($("itemRate").value),gst=Number($("itemGst").value||0);
+ if(!name||!(qty>0)||rate<0||!Number.isFinite(rate)){alert("सामान, सही मात्रा और रेट भरें।");return;}
+ const gross=qty*rate;let base,tax;
+ if($("gstMode").value==="inclusive"){base=gross/(1+gst/100);tax=gross-base;}else{base=gross;tax=base*gst/100;}
+ cart.push({name,qty,rate,gst,base,tax,amount:base+tax});
+ $("itemName").value="";$("itemQty").value=1;$("itemRate").value="";$("itemGst").value=0;renderCart();
+}
+function renderHistory(){
+ $("historyRows").innerHTML=bills.slice().sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||"")).map((b,i)=><tr><td>${esc(b.date)}</td><td>${esc(b.billNo)}</td><td>${esc(b.customer||"Walk-in")}</td><td>${esc(b.type)}</td><td>${money(b.total)}</td><td><button class="secondary" data-view-bill="${esc(b.id||b.billNo)}">देखें</button></td></tr>).join("")||'<tr><td colspan="6" class="muted">अभी कोई बिल सेव नहीं है।</td></tr>';
+ const todayBills=bills.filter(b=>b.date===today());$("todaySales").textContent=money(todayBills.reduce((s,b)=>s+Number(b.total||0),0));$("todayCount").textContent=todayBills.length;$("allCount").textContent=bills.length;
+}
+function makeBillObject(){
+ const subtotal=cart.reduce((s,x)=>s+x.base,0),tax=cart.reduce((s,x)=>s+x.tax,0),discount=Math.max(0,Number($("discount").value||0));
+ return {type:$("billType").value,billNo:$("billNo").value,date:$("billDate").value||today(),customer:$("customer").value.trim(),mobile:$("customerMobile").value.trim(),payment:$("payment").value,items:cart.map(x=>({...x})),subtotal,tax,discount,total:Math.max(0,subtotal+tax-discount),createdAt:new Date().toISOString()};
+}
+function previewBill(b){
+ currentPreview=b;
+ const gstInvoice=b.type==="GST Invoice";
+ $("billPreview").innerHTML=`<div class="bill-head"><h2>JP GENERAL STORE</h2><b>& DIGITAL CENTER</b><p>Village Amarpur, Ward No. 03, District Saharsa, Bihar</p><p>Owner: Amit Kumar | Mobile: 8797862789</p><h3 style="margin:9px 0 0">${gstInvoice?"GST TAX INVOICE":"CASH MEMO"}</h3></div>
+ <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px"><div><b>Bill No:</b> ${esc(b.billNo)}<br><b>Customer:</b> ${esc(b.customer||"Walk-in")}<br><b>Mobile:</b> ${esc(b.mobile||"—")}</div><div><b>Date:</b> ${esc(b.date)}<br><b>Payment:</b> ${esc(b.payment)}</div></div>
+ <table style="margin-top:16px"><thead><tr><th>#</th><th>Product / Service</th><th>Qty</th><th>Rate</th><th>GST</th><th>Amount</th></tr></thead><tbody>${b.items.map((x,i)=><tr><td>${i+1}</td><td>${esc(x.name)}</td><td>${x.qty}</td><td>${money(x.rate)}</td><td>${x.gst}%</td><td>${money(x.amount)}</td></tr>).join("")}</tbody></table>
+ <div style="margin:14px 0 0 auto;max-width:300px;font-size:13px"><div style="display:flex;justify-content:space-between"><span>Subtotal</span><b>${money(b.subtotal)}</b></div><div style="display:flex;justify-content:space-between"><span>GST</span><b>${money(b.tax)}</b></div><div style="display:flex;justify-content:space-between"><span>Discount</span><b>${money(b.discount)}</b></div><hr><div style="display:flex;justify-content:space-between;font-size:18px"><b>Grand Total</b><b>${money(b.total)}</b></div></div>
+ <p style="text-align:center;margin-top:30px;font-size:12px">Thank you for shopping with us. Visit Again!</p>`;
+ $("previewCard").classList.remove("hidden");$("previewCard").scrollIntoView({behavior:"smooth"});
+}
+async function saveBill(){
+ if(!cart.length){alert("पहले सामान जोड़ें।");return;}
+ const b=makeBillObject();
+ try{
+  if(online){
+   const counterRef=doc(db,"shops","jp-general-store","meta","counter");
+   const billsCol=collection(db,"shops","jp-general-store","bills");
+   const newRef=doc(billsCol);
+   await runTransaction(db,async tx=>{
+    const snap=await tx.get(counterRef);const n=(snap.exists()?Number(snap.data().last||0):0)+1;
+    const prefix=b.type==="GST Invoice"?"GST":"CASH";b.billNo=prefix+"-"+String(n).padStart(5,"0");b.id=newRef.id;
+    tx.set(counterRef,{last:n},{merge:true});tx.set(newRef,b);
+   });
+  }else{b.id="local-"+Date.now();bills.push(b);persistLocal();}
+  if(!online){renderHistory();}
+  previewBill(b);cart=[];renderCart();$("discount").value=0;refreshBillNo();
+ }catch(e){alert("बिल सेव नहीं हुआ: "+e.message);}
+}
+async function saveProduct(){
+ const name=$("pName").value.trim(),rate=Number($("pRate").value),gst=Number($("pGst").value||0),stock=Number($("pStock").value||0);
+ if(!name||!Number.isFinite(rate)||rate<0){alert("सामान का नाम और सही रेट भरें।");return;}
+ const p={id:"p-"+Date.now(),name,rate,gst,stock};
+ try{if(online){await setDoc(doc(db,"shops","jp-general-store","products",p.id),p);}else{products.push(p);persistLocal();renderProducts();}
+ $("pName").value="";$("pRate").value="";$("pGst").value=0;$("pStock").value=0;
+ }catch(e){alert("सामान सेव नहीं हुआ: "+e.message);}
+}
+function renderReports(){renderHistory();}
+function showBillById(id){const b=bills.find(x=>x.id===id||x.billNo===id);if(b)previewBill(b);}
+function exportCSV(){
+ const rows=[["Date","Bill No","Customer","Type","Payment","Subtotal","GST","Discount","Total"],...bills.map(b=>[b.date,b.billNo,b.customer,b.type,b.payment,b.subtotal,b.tax,b.discount,b.total])];
+ const csv=rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");
+ const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="JP-Sales-Report.csv";a.click();URL.revokeObjectURL(a.href);
+}
+async function connectFirebase(){
+ try{
+  const config=JSON.parse($("firebaseConfig").value);
+  const email=$("loginEmail").value.trim(),password=$("loginPassword").value;
+  if(!email||!password)throw new Error("ईमेल और पासवर्ड भरें।");
+  app=initializeApp(config);auth=getAuth(app);db=getFirestore(app);
+  await signInWithEmailAndPassword(auth,email,password);
+  online=true;setStatus("● Online Sync Connected",true);$("firebaseMessage").textContent="सफलतापूर्वक लॉगिन हुआ। डेटा Sync हो रहा है।";
+  localStorage.setItem("jp_firebase_config",JSON.stringify(config));
+  unsubs.forEach(f=>f());unsubs=[];
+  unsubs.push(onSnapshot(collection(db,"shops","jp-general-store","products"),snap=>{products=snap.docs.map(d=>d.data());persistLocal();renderProducts();},err=>console.error(err)));
+  unsubs.push(onSnapshot(collection(db,"shops","jp-general-store","bills"),snap=>{bills=snap.docs.map(d=>d.data());persistLocal();renderHistory();},err=>console.error(err)));
+  $("setupNotice").classList.add("hidden");
+ }catch(e){online=false;setStatus("● Local mode");$("firebaseMessage").textContent="कनेक्शन में समस्या: "+e.message;}
+}
+async function disconnectFirebase(){unsubs.forEach(f=>f());unsubs=[];if(auth){try{await signOut(auth)}catch(e){}}online=false;db=null;auth=null;setStatus("● Offline / Local mode");$("firebaseMessage").textContent="Disconnect किया गया। Local data इसी browser में रहेगा।";}
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");document.querySelectorAll(".panel").forEach(x=>x.classList.add("hidden"));$(btn.dataset.tab).classList.remove("hidden");if(btn.dataset.tab==="reports")renderReports();}));
+$("billType").addEventListener("change",refreshBillNo);$("addItem").addEventListener("click",addItem);$("discount").addEventListener("input",renderCart);
+$("itemName").addEventListener("change",()=>{const p=products.find(x=>x.name.toLowerCase()===$("itemName").value.trim().toLowerCase());if(p){$("itemRate").value=p.rate;$("itemGst").value=p.gst||0;}});
+$("cartRows").addEventListener("click",e=>{const i=e.target.dataset.delCart;if(i!==undefined){cart.splice(Number(i),1);renderCart();}});
+$("productRows").addEventListener("click",async e=>{const i=e.target.dataset.delProduct;if(i!==undefined){const p=products[Number(i)];if(online){await deleteDoc(doc(db,"shops","jp-general-store","products",p.id));}else{products.splice(Number(i),1);persistLocal();renderProducts();}}});
+$("historyRows").addEventListener("click",e=>{const id=e.target.dataset.viewBill;if(id)showBillById(id);});
+$("saveBill").addEventListener("click",saveBill);$("saveProduct").addEventListener("click",saveProduct);
+$("clearCart").addEventListener("click",()=>{cart=[];renderCart();});$("printBill").addEventListener("click",()=>window.print());
+$("newBill").addEventListener("click",()=>{$("previewCard").classList.add("hidden");$("customer").value="";$("customerMobile").value="";$("billDate").value=today();$("billType").value="Cash Memo";refreshBillNo();});
+$("exportCsv").addEventListener("click",exportCSV);$("connectFirebase").addEventListener("click",connectFirebase);$("disconnectFirebase").addEventListener("click",disconnectFirebase);
+$("billDate").value=today();refreshBillNo();renderProducts();renderCart();renderHistory();
+try{const c=localStorage.getItem("jp_firebase_config");if(c)$("firebaseConfig").value=c;}catch(e){}
+</script>
+</body>
+</html>
