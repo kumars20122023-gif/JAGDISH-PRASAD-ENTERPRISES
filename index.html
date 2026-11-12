@@ -549,3 +549,44 @@ try{const c=localStorage.getItem("jp_firebase_config");if(c)$("firebaseConfig").
 </script>
 </body>
 </html>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918797862789?text=Hello%2C%20I%20want%20more%20information"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener">
+  <span>WhatsApp Chat</span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+       alt="WhatsApp">
+</a>
+
+<style>
+.whatsapp-float {
+  position: fixed;
+  width: 65px;
+  height: 65px;
+  bottom: 25px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-decoration: none;
+  box-shadow: 0 3px 10px #777;
+}
+.whatsapp-float img {
+  width: 42px;
+  height: 42px;
+}
+.whatsapp-float span {
+  position: absolute;
+  right: 75px;
+  background: #25D366;
+  padding: 9px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+</style>
